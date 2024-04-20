@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import Typography from '@mui/material/Typography';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Button from 'react-bootstrap/Button';
 import ListModal from './ListModal';
