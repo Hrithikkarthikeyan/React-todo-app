@@ -5,6 +5,7 @@ import TodoGroup from '../components/TodoGroup';
 import GroupModal from '../components/GroupModal';
 import SearchBar from '../components/SearchBar';
 import DropdownFilters from '../components/DropdownFilters';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 function HomePage() {
@@ -97,7 +98,15 @@ function HomePage() {
 
         <div className="bg-white h-100" style={{width: "80%", marginLeft: "100px", overflowX: "hidden", overflowY: "auto"}}>
           <div style={{textAlign: "right", marginRight: "60px", marginTop: "20px"}}>
-            {user_name}<Button style={{marginLeft: "10px"}} onClick={() => handleLogout()}>Logout</Button>
+            <Dropdown data-bs-theme="dark">
+              <Dropdown.Toggle id="dropdown-basic">
+                {user_name}&nbsp;&nbsp;&nbsp;&nbsp;
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={() => handleLogout()}>Log out</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
           {(showTodoForm)? (<div style={{fontSize: "40px", fontWeight: "bold"}}>{listName}</div>
             ) : (<div style={{fontSize: "40px", fontWeight: "bold"}}>{tasksName}</div>)}

@@ -80,6 +80,11 @@ function TodoList({tasks, setTasks, list, setList, showTodoForm, completedTasksC
     }));
   }
 
+  if(tasks === undefined){
+    setCompletedTasksCount(0);
+    setTotalTasksCount(0);
+  }
+
   return (
     <div key={list}>
       <div className='todo-list' key={list}>
