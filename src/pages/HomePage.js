@@ -6,6 +6,7 @@ import GroupModal from '../components/GroupModal';
 import SearchBar from '../components/SearchBar';
 import DropdownFilters from '../components/DropdownFilters';
 import Dropdown from 'react-bootstrap/Dropdown';
+import ToggleOrderForm from '../components/ToggleOrderForm';
 
 
 function HomePage() {
@@ -21,6 +22,7 @@ function HomePage() {
   const [tasksName, setTasksName] = useState("");
   const [completedTasksCount, setCompletedTasksCount] = useState(0);
   const [totalTasksCount, setTotalTasksCount] = useState(0);
+  const [isToggledTaskOrder, setIsToggledTaskOrder] = useState(true);
 
 
   useEffect(() => {
@@ -97,7 +99,8 @@ function HomePage() {
         </div>
 
         <div className="bg-white h-100" style={{width: "80%", marginLeft: "100px", overflowX: "hidden", overflowY: "auto"}}>
-          <div style={{textAlign: "right", marginRight: "60px", marginTop: "20px"}}>
+          <div style={{textAlign: "right", alignContent: "right", marginRight: "60px", marginTop: "20px"}}>
+            {/* <ToggleOrderForm isToggledTaskOrder={isToggledTaskOrder} setIsToggledTaskOrder={setIsToggledTaskOrder} /> */}
             <Dropdown data-bs-theme="dark">
               <Dropdown.Toggle id="dropdown-basic">
                 {user_name}&nbsp;&nbsp;&nbsp;&nbsp;
@@ -110,7 +113,7 @@ function HomePage() {
           </div>
           {(showTodoForm)? (<div style={{fontSize: "40px", fontWeight: "bold"}}>{listName}</div>
             ) : (<div style={{fontSize: "40px", fontWeight: "bold"}}>{tasksName}</div>)}
-          <TodoList setCompletedTasksCount={setCompletedTasksCount} setTotalTasksCount={setTotalTasksCount} completedTasksCount={completedTasksCount} totalTasksCount={totalTasksCount} tasks={tasks} setTasks={setTasks} list={list} setList={setList} showTodoForm={showTodoForm} />
+          <TodoList isToggledTaskOrder={isToggledTaskOrder} setCompletedTasksCount={setCompletedTasksCount} setTotalTasksCount={setTotalTasksCount} completedTasksCount={completedTasksCount} totalTasksCount={totalTasksCount} tasks={tasks} setTasks={setTasks} list={list} setList={setList} showTodoForm={showTodoForm} />
         </div>
       </div>
     </div>

@@ -30,7 +30,7 @@ function TodoItem({ task, deleteTask, toggleCompleted, setTasks, tasks}) {
               <EditIcon />
             </Button>
             <UpdateTaskModal tasks={tasks} setTasks={setTasks} show={updateTaskModalShow} task={task} setUpdateTaskModalShow={setUpdateTaskModalShow} onHide={() => setUpdateTaskModalShow(false)} />
-            <Button variant="light" style={{backgroundColor: "white", color: "black", marginLeft: "10px"}}   onClick={() => deleteTask(task['TaskId'])}>
+            <Button variant="light" style={{backgroundColor: "white", color: "black", marginLeft: "10px"}}   onClick={() => deleteTask(task['TaskId'], task['Status'])}>
               <DeleteIcon />
             </Button>
           </div>

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import TodoItem from './TodoItem';
 import { Button, Form } from 'react-bootstrap';
 
-function TodoList({tasks, setTasks, list, setList, showTodoForm, completedTasksCount, totalTasksCount, setCompletedTasksCount, setTotalTasksCount}) {
+function TodoList({tasks, setTasks, list, setList, showTodoForm, completedTasksCount, totalTasksCount, setCompletedTasksCount, setTotalTasksCount, isToggledTaskOrder}) {
   const [text, setText] = useState("");
+  
   function addTask(text) {
     if(text.length === 0){
       return ;
@@ -35,18 +36,19 @@ function TodoList({tasks, setTasks, list, setList, showTodoForm, completedTasksC
       })
   }
 
-  function deleteTask(id) {
+  function deleteTask(id, taskStatus) {
     fetch("/api/task?task=" + id, {
       method: 'delete'
     }).then(r => r.json())
       .then(response => {
         if(response){
-          // console.log(response);
           setTotalTasksCount(totalTasksCount-1);
+          if(!taskStatus===false) setCompletedTasksCount(completedTasksCount-1);
         }else{
           console.log("Oops, Something went wrong!");
         }
       })
+    
     setTasks(tasks.filter(task => task["TaskId"] !== id));
   }
 
@@ -111,7 +113,9 @@ function TodoList({tasks, setTasks, list, setList, showTodoForm, completedTasksC
             </div>
           </div>)}
         {(tasks === undefined)? (<div style={{fontSize: "20px", marginTop: "20px", marginLeft: "5px"}}>No tasks in this list</div>) : 
-        tasks.map((task) => {
+        (
+          <div>
+          {!isToggledTaskOrder && tasks.map((task) => {
           return <TodoItem 
                     key={task.id}
                     task={task}
@@ -120,7 +124,29 @@ function TodoList({tasks, setTasks, list, setList, showTodoForm, completedTasksC
                     setTasks={setTasks}
                     tasks={tasks}
                   />
-        })}
+          })}
+          {isToggledTaskOrder && tasks.filter(task => !task['Status']).map((task) => {
+            return <TodoItem 
+                      key={task.id}
+                      task={task}
+                      deleteTask={deleteTask}
+                      toggleCompleted={toggleCompleted}
+                      setTasks={setTasks}
+                      tasks={tasks}
+                    />
+            })}
+          {isToggledTaskOrder && tasks.filter(task => task['Status']).map((task) => {
+          return <TodoItem 
+                    key={task.id}
+                    task={task}
+                    deleteTask={deleteTask}
+                    toggleCompleted={toggleCompleted}
+                    setTasks={setTasks}
+                    tasks={tasks}
+                  />
+          })}
+          </div>
+        )}
       </div>
     </div>
   )

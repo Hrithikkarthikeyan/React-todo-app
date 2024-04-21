@@ -21,7 +21,7 @@ function ListItem(props) {
         <Button variant="light" style={{height: "40px", backgroundColor: "white", color: "black"}}   onClick={() => setDeleteListModalShow(true)}>
           <DeleteIcon />
         </Button>
-        <DeleteListModal show={deleteListModalShow} setDeleteListModalShow={setDeleteListModalShow} setList={props.setList} lists={props.lists} listName={props.list["ListName"]} setLists={props.setLists} list={props.list} onHide={() => setDeleteListModalShow(false)}/>
+        <DeleteListModal setListName={props.setListName} show={deleteListModalShow} setDeleteListModalShow={setDeleteListModalShow} setList={props.setList} lists={props.lists} listName={props.list["ListName"]} setLists={props.setLists} list={props.list} onHide={() => setDeleteListModalShow(false)}/>
       </div>
     </div>
   )

@@ -13,6 +13,7 @@ function DeleteListModal(props) {
         if(response){
           // console.log(response);
           props.setList(null);
+          props.setListName("Reminders");
         }else{
           console.log("Oops, Something went wrong!");
         }
