@@ -50,24 +50,24 @@ CREATE TABLE users (
 );
 
 CREATE TABLE taskgroup (
-  GroupId int NOT NULL AUTO_INCREMENT,
-  GroupName varchar(255) NOT NULL,
-  UserId int NOT NULL,
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (UserId) REFERENCES Users(UserId),
-  primary key (GroupId)
-);
-
-CREATE TABLE tasklist (
-  ListId int NOT NULL AUTO_INCREMENT,
-  ListName varchar(255) NOT NULL,
-  GroupId int NOT NULL,
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (GroupId) REFERENCES taskgroup(GroupId),
-  primary key (ListId)
-);
+  GroupId int NOT NULL AUTO_INCREMENT,  
+  GroupName varchar(255) NOT NULL,  
+  UserId int NOT NULL,  
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,  
+  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  
+  FOREIGN KEY (UserId) REFERENCES Users(UserId),  
+  primary key (GroupId)  
+);  
+  
+CREATE TABLE tasklist (  
+  ListId int NOT NULL AUTO_INCREMENT,  
+  ListName varchar(255) NOT NULL,  
+  GroupId int NOT NULL,  
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,  
+  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  
+  FOREIGN KEY (GroupId) REFERENCES taskgroup(GroupId),  
+  primary key (ListId)  
+);  
 
 CREATE TABLE task (
   TaskId int NOT NULL AUTO_INCREMENT,
