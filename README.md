@@ -24,30 +24,30 @@
 git clone https://github.com/Hrithikkarthikeyan/React-todo-app.git
 
 ### Install necessary client packages:-
-`cd React-todo-app`
-`npm install`
+`cd React-todo-app`  
+`npm install`  
 
 ### Install MySQL:-
-(refer:  https://www.geeksforgeeks.org/how-to-install-mysql-on-macos/)
-Start the MySql server
-Open the file(React-todo-app/flask-server/server.py) and set MYSQL_PASSWORD in line 10 to your MySQL password.
+(refer:  https://www.geeksforgeeks.org/how-to-install-mysql-on-macos/)  
+Start the MySql server  
+Open the file(React-todo-app/flask-server/server.py) and set MYSQL_PASSWORD in line 10 to your MySQL password.  
 
 ### Open MySQL command line in the terminal:-
-`mysql -u root -p`
-(or)
-`/usr/local/mysql/bin/mysql -u root -p`
+`mysql -u root -p`  
+(or)   
+`/usr/local/mysql/bin/mysql -u root -p`  
 
 ### Create database and tables in MySQL:-
-CREATE DATABASE todo;
-USE todo;
+CREATE DATABASE todo;  
+USE todo;  
 
-CREATE TABLE users (
-  UserId int NOT NULL AUTO_INCREMENT,
-  Name varchar(255) NOT NULL,
-  Password varchar(255) NOT NULL,
-  Email varchar(255) NOT NULL,
-  primary key(UserId)
-);
+CREATE TABLE users (  
+  UserId int NOT NULL AUTO_INCREMENT,  
+  Name varchar(255) NOT NULL,  
+  Password varchar(255) NOT NULL,  
+  Email varchar(255) NOT NULL,  
+  primary key(UserId)  
+);  
 
 CREATE TABLE taskgroup (
   GroupId int NOT NULL AUTO_INCREMENT,  
@@ -69,34 +69,34 @@ CREATE TABLE tasklist (
   primary key (ListId)  
 );  
 
-CREATE TABLE task (
-  TaskId int NOT NULL AUTO_INCREMENT,
-  TaskName varchar(255) NOT NULL,
-  Description varchar(255),
-  Deadline Date,
-  Status int NOT NULL,
-  ListId int,
-  UserId int NOT NULL,
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (ListId) REFERENCES tasklist(ListId),
-  FOREIGN KEY (UserId) REFERENCES Users(UserId),
-  primary key (TaskId)
-);
+CREATE TABLE task (  
+  TaskId int NOT NULL AUTO_INCREMENT,  
+  TaskName varchar(255) NOT NULL,  
+  Description varchar(255),  
+  Deadline Date,  
+  Status int NOT NULL,  
+  ListId int,  
+  UserId int NOT NULL,  
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,  
+  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  
+  FOREIGN KEY (ListId) REFERENCES tasklist(ListId),  
+  FOREIGN KEY (UserId) REFERENCES Users(UserId),  
+  primary key (TaskId)  
+);  
 
 ### Start flask server:-
-`cd flask-server`
-`python3 -m venv venv`
+`cd flask-server`  
+`python3 -m venv venv`  
 
-For Mac: `source venv/bin/activate`
-For Windows: `./venv/Scripts/activate`
-
-`pip install flask flask_mysqldb flask_bcrypt jwt`
-`brew install mysql-client pkg-config`
-`export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql-client/lib/pkgconfig"`
-`python3 server.py`
+For Mac: `source venv/bin/activate`  
+For Windows: `./venv/Scripts/activate`  
+  
+`pip install flask flask_mysqldb flask_bcrypt jwt`  
+`brew install mysql-client pkg-config`  
+`export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql-client/lib/pkgconfig"`  
+`python3 server.py`  
 
 ### Start todo app:-
-cd React-todo-app
-npm start
-
+cd React-todo-app  
+npm start  
+  
