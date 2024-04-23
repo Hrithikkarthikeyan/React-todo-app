@@ -17,7 +17,7 @@ function SignUp() {
       "email": email,
       "password": password
     }
-    fetch("/api/signup", {
+    fetch(process.env.REACT_APP_API_URI + "/api/signup", {
       method: 'post',
       body: JSON.stringify(signupPayload)
     }).then(r => r.json())
