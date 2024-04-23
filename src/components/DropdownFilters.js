@@ -17,7 +17,7 @@ function DropdownFilters(props) {
     }
     props.setTasksName(filterName + " Tasks");
     const userId = localStorage.getItem('user_id');
-    fetch("/api/filter?user=" + userId + "&filter=" + filter, {
+    fetch(process.env.REACT_APP_API_URI + "/api/filter?user=" + userId + "&filter=" + filter, {
       method: 'get',
     }).then(r => r.json())
       .then(response => {

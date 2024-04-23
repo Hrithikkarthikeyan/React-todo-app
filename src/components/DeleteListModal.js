@@ -6,7 +6,7 @@ function DeleteListModal(props) {
 
   function deleteList(id) {
     props.setDeleteListModalShow(false);
-    fetch("/api/tasklist?list=" + id, {
+    fetch(process.env.REACT_APP_API_URI + "/api/tasklist?list=" + id, {
       method: 'delete'
     }).then(r => r.json())
       .then(response => {

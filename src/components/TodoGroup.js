@@ -16,7 +16,7 @@ function TodoGroup(props) {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
-    fetch("/api/tasklist?group=" + props.groupId, {
+    fetch(process.env.REACT_APP_API_URI + "/api/tasklist?group=" + props.groupId, {
       method: 'get',
     }).then(r => r.json())
       .then(response => {

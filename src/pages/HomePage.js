@@ -27,7 +27,7 @@ function HomePage() {
 
   useEffect(() => {
     setShowTodoForm(true);
-    fetch("/api/task?user=" + user_id, {
+    fetch(process.env.REACT_APP_API_URI + "/api/task?user=" + user_id, {
       method: 'get',
     }).then(r => r.json())
       .then(response => {
@@ -49,7 +49,7 @@ function HomePage() {
   }, [list]);
 
   useEffect(() => {
-    fetch("/api/taskgroup?user=" + user_id, {
+    fetch(process.env.REACT_APP_API_URI + "/api/taskgroup?user=" + user_id, {
       method: 'get',
     }).then(r => r.json())
       .then(response => {

@@ -12,7 +12,7 @@ function SearchBar(props) {
     props.setShowTodoForm(false);
     props.setTasksName("Search Results for \"" + searchTaskString + "\"" );
     const userId = localStorage.getItem('user_id');
-    fetch("/api/search?task=" + searchTaskString + "&user=" + userId, {
+    fetch(process.env.REACT_APP_API_URI + "/api/search?task=" + searchTaskString + "&user=" + userId, {
       method: 'get',
     }).then(r => r.json())
       .then(response => {

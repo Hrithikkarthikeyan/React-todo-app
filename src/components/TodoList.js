@@ -22,7 +22,7 @@ function TodoList({tasks, setTasks, list, setList, showTodoForm, completedTasksC
     setList(-1);
     
     setText('');
-    fetch("/api/task", {
+    fetch(process.env.REACT_APP_API_URI + "/api/task", {
       method: 'post',
       body: JSON.stringify(newTask)
     }).then(r => r.json())
@@ -37,7 +37,7 @@ function TodoList({tasks, setTasks, list, setList, showTodoForm, completedTasksC
   }
 
   function deleteTask(id, taskStatus) {
-    fetch("/api/task?task=" + id, {
+    fetch(process.env.REACT_APP_API_URI + "/api/task?task=" + id, {
       method: 'delete'
     }).then(r => r.json())
       .then(response => {
@@ -59,7 +59,7 @@ function TodoList({tasks, setTasks, list, setList, showTodoForm, completedTasksC
           "TaskId": task["TaskId"],
           "Status": !task["Status"]
         }
-        fetch("/api/task/edit", {
+        fetch(process.env.REACT_APP_API_URI + "/api/task/edit", {
           method: 'put',
           body: JSON.stringify(editedTask)
         }).then(r => r.json())

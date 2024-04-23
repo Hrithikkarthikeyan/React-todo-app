@@ -12,7 +12,7 @@ function UpdateTaskModal(props) {
       "TaskId": props.task["TaskId"],
       "TaskName": updatedTaskName
     }
-    fetch("/api/task/edit", {
+    fetch(process.env.REACT_APP_API_URI + "/api/task/edit", {
       method: 'put',
       body: JSON.stringify(editedTask)
     }).then(r => r.json())

@@ -12,7 +12,7 @@ function GroupModal(props) {
       "UserId": localStorage.getItem('user_id')
     }
     
-    fetch("/api/taskgroup", {
+    fetch(process.env.REACT_APP_API_URI + "/api/taskgroup", {
       method: 'post',
       body: JSON.stringify(newGroup)
     }).then(r => r.json())
@@ -20,7 +20,7 @@ function GroupModal(props) {
         if(response){
           // (props.groups === undefined)? props.setGroups([newGroup]) : props.setGroups([...props.groups, newGroup]);
           const user_id = localStorage.getItem('user_id');
-          fetch("/api/taskgroup?user=" + user_id, {
+          fetch(process.env.REACT_APP_API_URI + "/api/taskgroup?user=" + user_id, {
             method: 'get',
           }).then(r => r.json())
             .then(response => {

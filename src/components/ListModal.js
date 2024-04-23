@@ -11,13 +11,13 @@ function ListModal(props) {
       "ListName": listName,
       "GroupId": props.groupId
     }
-    fetch("/api/tasklist", {
+    fetch(process.env.REACT_APP_API_URI + "/api/tasklist", {
       method: 'post',
       body: JSON.stringify(newList)
     }).then(r => r.json())
       .then(response => {
         if(response){
-          fetch("/api/tasklist?group=" + props.groupId, {
+          fetch(process.env.REACT_APP_API_URI + "/api/tasklist?group=" + props.groupId, {
             method: 'get',
           }).then(r => r.json())
             .then(response => {

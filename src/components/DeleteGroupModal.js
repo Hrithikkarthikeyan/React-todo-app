@@ -6,7 +6,7 @@ function DeleteGroupModal(props) {
 
   function deleteGroup(id) {
     props.setDeleteGroupModalShow(false);
-    fetch("/api/taskgroup?group=" + id, {
+    fetch(process.env.REACT_APP_API_URI + "/api/taskgroup?group=" + id, {
       method: 'delete'
     }).then(r => r.json())
       .then(response => {
