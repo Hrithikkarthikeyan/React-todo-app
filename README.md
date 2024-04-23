@@ -91,7 +91,7 @@ CREATE TABLE task (
 For Mac: `source venv/bin/activate`  
 For Windows: `./venv/Scripts/activate`  
   
-`pip install flask flask_mysqldb flask_bcrypt jwt`  
+`pip install flask flask_mysqldb flask_bcrypt PyJWT`  
 `brew install mysql-client pkg-config`  
 `export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql-client/lib/pkgconfig"`  
 `python3 server.py`  
