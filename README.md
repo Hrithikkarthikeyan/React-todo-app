@@ -92,8 +92,11 @@ For Mac: `source venv/bin/activate`
 For Windows: `./venv/Scripts/activate`  
   
 `pip install flask flask_mysqldb flask_bcrypt PyJWT`  
+if any errors faced for mysql-client in mac use the below two commands  
 `brew install mysql-client pkg-config`  
 `export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql-client/lib/pkgconfig"`  
+
+Start server command  
 `python3 server.py`  
 
 ### Start todo app:-
